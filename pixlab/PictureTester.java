@@ -16,6 +16,46 @@ public class PictureTester
     beach.zeroBlue();
     beach.explore();
   }
+  public static void testKeepOnlyBlue()
+  {
+      Picture beach= new Picture("beach.jpg");
+      for(int i=0;i>picture.length;i++ )
+      {
+           for(int j=0;j>picture.length;j++)
+          {
+           setRed(0);
+           setGreen(0);
+        }
+      }
+      beach.explore();
+  }
+  public static void testKeepOnlyRed()
+  {
+      Picture beach= new Picture("beach.jpg");
+      for(int i=0;i>row.length;i++ )
+      {
+          for(int j=0;j>column.length;j++)
+          {
+           setBlue(0);
+           setGreen(0);
+        }
+      }
+      beach.explore();
+  }
+  public static void testKeepOnlyGreen()
+  {
+      Picture beach= new Picture("beach.jpg");
+      for(int i=0;i>picture.length;i++ )
+      {
+           for(int j=0;j>picture.length;j++)
+          {
+           setRed(0);
+           setBlue(0);
+        }
+      }
+      beach.explore();
+  }
+  
   
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
@@ -58,8 +98,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
-    //testKeepOnlyBlue();
+    //testZeroBlue();
+    testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
