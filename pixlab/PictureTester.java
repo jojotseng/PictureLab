@@ -19,40 +19,25 @@ public class PictureTester
   public static void testKeepOnlyBlue()
   {
       Picture beach= new Picture("beach.jpg");
-      for(int i=0;i>picture.length;i++ )
-      {
-           for(int j=0;j>picture.length;j++)
-          {
-           setRed(0);
-           setGreen(0);
-        }
-      }
+      beach.explore();
+      beach.zeroRed();
+      beach.zeroGreen();
       beach.explore();
   }
   public static void testKeepOnlyRed()
   {
       Picture beach= new Picture("beach.jpg");
-      for(int i=0;i>row.length;i++ )
-      {
-          for(int j=0;j>column.length;j++)
-          {
-           setBlue(0);
-           setGreen(0);
-        }
-      }
+      beach.explore();
+      beach.zeroGreen();
+      beach.zeroBlue();
       beach.explore();
   }
   public static void testKeepOnlyGreen()
   {
       Picture beach= new Picture("beach.jpg");
-      for(int i=0;i>picture.length;i++ )
-      {
-           for(int j=0;j>picture.length;j++)
-          {
-           setRed(0);
-           setBlue(0);
-        }
-      }
+      beach.explore();
+      beach.zeroRed();
+      beach.zeroBlue();
       beach.explore();
   }
   
@@ -65,6 +50,64 @@ public class PictureTester
     caterpillar.mirrorVertical();
     caterpillar.explore();
   }
+  public static void testVerticalRighttoLeft()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    Pixel[][] pixels = caterpillar.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < width / 2; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][width - 1 - col];
+        leftPixel.setColor(rightPixel.getColor());
+      }
+    } 
+    caterpillar.explore();
+  }
+  
+  public static void testMirrorHorizontalBottomtoTop()
+  {
+      Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    Pixel[][] pixels = caterpillar.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length/2; row++)
+    {
+      for (int col = 0; col < width ; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[pixels.length - 1 - row][col];
+        topPixel.setColor(bottomPixel.getColor());
+      }
+    } 
+    caterpillar.explore();
+ }
+ public static void testMirrorHorizontalToptoBottom()
+  {
+      Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    Pixel[][] pixels = caterpillar.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length/2; row++)
+    {
+      for (int col = 0; col < width ; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[pixels.length - 1 - row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+    caterpillar.explore();
+ }
   
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
@@ -99,13 +142,16 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    testKeepOnlyBlue();
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    //testMirrorVertical();
+    testMirrorVertical();
+    testVerticalRighttoLeft();
+    testMirrorHorizontalBottomtoTop();
+    testMirrorHorizontalToptoBottom();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
