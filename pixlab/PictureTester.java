@@ -45,16 +45,16 @@ public class PictureTester
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
-    caterpillar.explore();
-    caterpillar.mirrorVertical();
-    caterpillar.explore();
+    Picture download = new Picture("download.jpg");
+    download.explore();
+    download.mirrorVertical();
+    download.explore();
   }
   public static void testVerticalRighttoLeft()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
-    caterpillar.explore();
-    Pixel[][] pixels = caterpillar.getPixels2D();
+    Picture download = new Picture("download.jpg");
+    download.explore();
+    Pixel[][] pixels = download.getPixels2D();
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     int width = pixels[0].length;
@@ -67,7 +67,7 @@ public class PictureTester
         leftPixel.setColor(rightPixel.getColor());
       }
     } 
-    caterpillar.explore();
+    download.explore();
   }
   
   public static void testMirrorHorizontalBottomtoTop()
@@ -108,7 +108,30 @@ public class PictureTester
     } 
     caterpillar.explore();
  }
-  
+  public static void testMirrorDiagnol()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+     
+      Pixel[][] pixels = beach.getPixels2D();
+      Pixel leftPixel = null;
+      Pixel rightPixel = null;
+      int max = pixels.length;
+
+    for (int row = 1; row < max; row++)
+
+    {
+        for (int col = 0; col < row; col++)
+        {
+            leftPixel = pixels[row][col];
+            rightPixel = pixels[col][row];
+            rightPixel.setColor(leftPixel.getColor());
+        }
+    }
+    beach.explore();
+ }
+    
+   
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -152,6 +175,7 @@ public class PictureTester
     testVerticalRighttoLeft();
     testMirrorHorizontalBottomtoTop();
     testMirrorHorizontalToptoBottom();
+    testMirrorDiagnol();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
